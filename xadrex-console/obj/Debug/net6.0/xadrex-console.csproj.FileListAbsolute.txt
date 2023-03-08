@@ -1,0 +1,15 @@
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\bin\Debug\net6.0\xadrex-console.exe
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\bin\Debug\net6.0\xadrex-console.deps.json
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\bin\Debug\net6.0\xadrex-console.runtimeconfig.json
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\bin\Debug\net6.0\xadrex-console.dll
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\bin\Debug\net6.0\xadrex-console.pdb
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net6.0\xadrex-console.csproj.AssemblyReference.cache
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net6.0\xadrex-console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net6.0\xadrex-console.AssemblyInfoInputs.cache
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net6.0\xadrex-console.AssemblyInfo.cs
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net6.0\xadrex-console.csproj.CoreCompileInputs.cache
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net6.0\xadrex-console.dll
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net6.0\refint\xadrex-console.dll
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net6.0\xadrex-console.pdb
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net6.0\xadrex-console.genruntimeconfig.cache
+C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net6.0\ref\xadrex-console.dll
