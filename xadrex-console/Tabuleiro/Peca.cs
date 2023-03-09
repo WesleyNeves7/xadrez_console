@@ -8,9 +8,9 @@ namespace xadrex_console.Tabuleiro
         public int QteMovimentos { get; set; }
         public  tabuleiro Tab { get; set; }
 
-        public Peca(Posicao posicao, Cor cor, tabuleiro tab)
+        public Peca(Cor cor, tabuleiro tab)
         {
-            Posicao = posicao;
+            Posicao = null;
             Cor = cor;
             QteMovimentos = 0;
             Tab = tab;
