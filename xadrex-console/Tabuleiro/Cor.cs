@@ -1,7 +1,7 @@
 ﻿
 namespace xadrex_console.Tabuleiro
 {
-    enum Cor
+    enum  Cor
     {
         Branca,
         Preta,
