@@ -1,5 +1,5 @@
 ﻿
-namespace xadrex_console.Tabuleiro
+namespace xadrex_console.TabuleiroXadrez
 {
     enum  Cor
     {

@@ -1,4 +1,4 @@
-﻿using xadrex_console.Tabuleiro;
+﻿using xadrex_console.TabuleiroXadrez;
 
 namespace xadrex_console.Xadrez
 {
@@ -14,7 +14,7 @@ namespace xadrex_console.Xadrez
         }
         public Posicao ToPosicao()
         {
-            return new Posicao(8-Linha,Coluna-'A');
+            return new Posicao(8 - Linha, Coluna - 'A');
         }
         public override string ToString()
         {

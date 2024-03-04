@@ -8,23 +8,23 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\wesle\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Info\\.nuget\\packages\\": {},
+    "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\wesle\\Documents\\Projetos C#\\xadrex-console\\xadrex-console\\xadrex-console.csproj",
+      "projectUniqueName": "C:\\Testes\\xadrez_console\\xadrex-console\\xadrex-console.csproj",
       "projectName": "xadrex-console",
-      "projectPath": "C:\\Users\\wesle\\Documents\\Projetos C#\\xadrex-console\\xadrex-console\\xadrex-console.csproj",
-      "packagesPath": "C:\\Users\\wesle\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wesle\\Documents\\Projetos C#\\xadrex-console\\xadrex-console\\obj\\",
+      "projectPath": "C:\\Testes\\xadrez_console\\xadrex-console\\xadrex-console.csproj",
+      "packagesPath": "C:\\Users\\Info\\.nuget\\packages\\",
+      "outputPath": "C:\\Testes\\xadrez_console\\xadrex-console\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\wesle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Info\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -46,6 +46,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -67,7 +72,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

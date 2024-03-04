@@ -1,30 +1,35 @@
-﻿namespace xadrex_console.Tabuleiro
+﻿namespace xadrex_console.TabuleiroXadrez
 {
-    internal class tabuleiro
+    internal class Tabuleiro
     {
         public int Linhas { get; set; }
         public int Colunas { get; set; }
+
         private Peca[,] Pecas;
 
-        public tabuleiro(int linhas, int colunas)
+        public Tabuleiro(int linhas, int colunas)
         {
             Linhas = linhas;
             Colunas = colunas;
             Pecas = new Peca[Linhas, Colunas];
         }
+
         public Peca Peca(int linha, int coluna)
         {
             return Pecas[linha, coluna];
         }
+
         public Peca Peca(Posicao posicao)
         {
             return Pecas[posicao.Linha, posicao.Coluna];
         }
+
         public bool ExistePeca(Posicao posicao)
         {
             ValidarPosicao(posicao);
             return Peca(posicao) != null;
         }
+
         public void ColocarPeca(Peca peca, Posicao posicao)
         {
             if (ExistePeca(posicao))
@@ -34,6 +39,19 @@
             Pecas[posicao.Linha, posicao.Coluna] = peca;
             peca.Posicao = posicao;
         }
+
+        public Peca RetirarPeca(Posicao pos)
+        {
+            if (Peca(pos) == null)
+            {
+                return null;
+            }
+            Peca aux = Peca(pos);
+            aux.Posicao = null;
+            Pecas[pos.Linha, pos.Coluna] = null;
+            return aux;
+        }
+
         public bool PosicaoValida(Posicao posicao)
         {
             if (posicao.Linha < 0 || posicao.Linha >= Linhas || posicao.Coluna < 0 || posicao.Coluna >= Colunas)
@@ -42,6 +60,7 @@
             }
             return true;
         }
+
         public void ValidarPosicao(Posicao posicao)
         {
             if (!PosicaoValida(posicao))

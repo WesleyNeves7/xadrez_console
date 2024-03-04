@@ -13,3 +13,18 @@ C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net
 C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net6.0\xadrex-console.pdb
 C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net6.0\xadrex-console.genruntimeconfig.cache
 C:\Users\wesle\Documents\Projetos C#\xadrex-console\xadrex-console\obj\Debug\net6.0\ref\xadrex-console.dll
+C:\Testes\xadrez_console\xadrex-console\bin\Debug\net6.0\xadrex-console.exe
+C:\Testes\xadrez_console\xadrex-console\bin\Debug\net6.0\xadrex-console.deps.json
+C:\Testes\xadrez_console\xadrex-console\bin\Debug\net6.0\xadrex-console.runtimeconfig.json
+C:\Testes\xadrez_console\xadrex-console\bin\Debug\net6.0\xadrex-console.dll
+C:\Testes\xadrez_console\xadrex-console\bin\Debug\net6.0\xadrex-console.pdb
+C:\Testes\xadrez_console\xadrex-console\obj\Debug\net6.0\xadrex-console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Testes\xadrez_console\xadrex-console\obj\Debug\net6.0\xadrex-console.AssemblyInfoInputs.cache
+C:\Testes\xadrez_console\xadrex-console\obj\Debug\net6.0\xadrex-console.AssemblyInfo.cs
+C:\Testes\xadrez_console\xadrex-console\obj\Debug\net6.0\xadrex-console.csproj.CoreCompileInputs.cache
+C:\Testes\xadrez_console\xadrex-console\obj\Debug\net6.0\xadrex-console.sourcelink.json
+C:\Testes\xadrez_console\xadrex-console\obj\Debug\net6.0\xadrex-console.dll
+C:\Testes\xadrez_console\xadrex-console\obj\Debug\net6.0\refint\xadrex-console.dll
+C:\Testes\xadrez_console\xadrex-console\obj\Debug\net6.0\xadrex-console.pdb
+C:\Testes\xadrez_console\xadrex-console\obj\Debug\net6.0\xadrex-console.genruntimeconfig.cache
+C:\Testes\xadrez_console\xadrex-console\obj\Debug\net6.0\ref\xadrex-console.dll

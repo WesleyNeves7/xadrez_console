@@ -1,12 +1,12 @@
 ﻿using System;
-using xadrex_console.Tabuleiro;
+using xadrex_console.TabuleiroXadrez;
 
 
 namespace xadrex_console.Xadrez
 {
     internal class Rei : Peca
     {
-        public Rei(tabuleiro tab, Cor cor) : base(cor, tab)
+        public Rei(TabuleiroXadrez.Tabuleiro tab, Cor cor) : base(cor, tab)
         {
         }
         public override string ToString()
