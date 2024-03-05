@@ -1,7 +1,7 @@
 ﻿
 namespace xadrex_console.TabuleiroXadrez
 {
-    internal class Peca
+    internal abstract class Peca
     {
         public Posicao Posicao { get; set; }
         public Cor Cor { get; set; }
@@ -20,5 +20,17 @@ namespace xadrex_console.TabuleiroXadrez
         {
             QteMovimentos++;
         }
+
+        internal bool PodeMover(Posicao pos)
+        {
+            if (!Tab.PosicaoValida(pos))
+            {
+                return false;
+            }
+            Peca p = Tab.Peca(pos);
+            return p == null || p.Cor != Cor;
+        }
+
+        public abstract bool[,] MovimentosPossiveis();
     }
 }

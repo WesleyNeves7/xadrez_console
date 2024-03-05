@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Testes\\xadrez_console\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|c:\\testes\\xadrez_console\\xadrex-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|solutionrelative:xadrex-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|c:\\testes\\xadrez_console\\xadrex-console\\tela.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|solutionrelative:xadrex-console\\tela.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,6 +35,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Tela.cs",
+              "DocumentMoniker": "C:\\Testes\\xadrez_console\\xadrex-console\\Tela.cs",
+              "RelativeDocumentMoniker": "xadrex-console\\Tela.cs",
+              "ToolTip": "C:\\Testes\\xadrez_console\\xadrex-console\\Tela.cs",
+              "RelativeToolTip": "xadrex-console\\Tela.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAEwDAAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-05T16:13:46.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Testes\\xadrez_console\\xadrex-console\\Program.cs",
+              "RelativeDocumentMoniker": "xadrex-console\\Program.cs",
+              "ToolTip": "C:\\Testes\\xadrez_console\\xadrex-console\\Program.cs",
+              "RelativeToolTip": "xadrex-console\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-05T14:37:20.663Z",
+              "EditorCaption": ""
             }
           ]
         }
