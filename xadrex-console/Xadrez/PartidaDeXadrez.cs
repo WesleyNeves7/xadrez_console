@@ -5,18 +5,26 @@ namespace xadrex_console.Xadrez
     internal class PartidaDeXadrez
     {
         public Tabuleiro Tab { get; private set; }
+        
         public int Turno { get; private set; }
+        
         public Cor JogadorAtual { get; private set; }
+        
         public bool Terminada { get; private set; }
 
+        public bool Xeque { get; private set; }
+        
         private HashSet<Peca> Pecas;
+        
         private HashSet<Peca> Capturadas;
+
 
         public PartidaDeXadrez()
         {
             Tab = new Tabuleiro(8, 8);
             Turno = 1;
             JogadorAtual = Cor.Branca;
+            Xeque = false;
             Pecas = new HashSet<Peca>();
             Capturadas = new HashSet<Peca>();
             ColocarPecas();
@@ -38,7 +46,7 @@ namespace xadrex_console.Xadrez
             }
         }
 
-        public void ValidarPosicaoDestino(Posicao origem, Posicao destino)
+        private void ValidarPosicaoDestino(Posicao origem, Posicao destino)
         {
             if (!Tab.Peca(origem).PodeMoverPara(destino))
             {
@@ -52,6 +60,16 @@ namespace xadrex_console.Xadrez
             {
                 ValidarPosicaoDestino(origem, destino);
                 ExecutaMovimento(origem, destino);
+
+                if (EstaEmXeque(Adversario(JogadorAtual)))
+                {
+                    Xeque = true;
+                }
+                else
+                {
+                    Xeque = false;
+                }
+
                 MudaJogador();
             }
             catch (TabuleiroException ex)
@@ -62,13 +80,34 @@ namespace xadrex_console.Xadrez
 
         private void ExecutaMovimento(Posicao origem, Posicao destino)
         {
-            Peca p = Tab.RetirarPeca(origem);
-            p.IncrementarQtdMovimentos();
+            Peca peca = Tab.RetirarPeca(origem);
+            peca.IncrementarQtdMovimentos();
             Peca pecaCapturada = Tab.RetirarPeca(destino);
-            Tab.ColocarPeca(p, destino);
+            Tab.ColocarPeca(peca, destino);
+
             if (pecaCapturada != null)
             {
                 Capturadas.Add(pecaCapturada);
+            }
+
+
+            if (EstaEmXeque(peca.Cor))
+            {
+                DesfazMovimento(origem, destino, pecaCapturada);
+                throw new TabuleiroException("Esta jogada não pode ser executada pois colocaria o seu rei em cheque!");
+            }
+        }
+
+        private void DesfazMovimento(Posicao origem, Posicao destino, Peca pecaCapturada)
+        {
+            Peca peca = Tab.RetirarPeca(destino);
+            peca.DecrementarQtdMovimentos();
+            Tab.ColocarPeca(peca, origem);
+
+            if (pecaCapturada != null)
+            {
+                Tab.ColocarPeca(pecaCapturada, destino);
+                Capturadas.Remove(pecaCapturada);
             }
         }
 
@@ -85,7 +124,7 @@ namespace xadrex_console.Xadrez
             }
         }
 
-        public void ColocarNovaPeca(Peca peca, char coluna, int linha)
+        private void ColocarNovaPeca(Peca peca, char coluna, int linha)
         {
             Tab.ColocarPeca(peca, new PosicaoXadrez(coluna, linha).ToPosicao());
             Pecas.Add(peca);
@@ -119,6 +158,43 @@ namespace xadrex_console.Xadrez
             HashSet<Peca> aux = Pecas.Where(i => i.Cor == cor).ToHashSet();
             aux.ExceptWith(PecasCapturadas(cor));
             return aux;
+        }
+
+        private Peca? Rei(Cor cor)
+        {
+            return PecasEmJogo(cor).Where(i => i is Rei).FirstOrDefault();
+        }
+
+        private bool EstaEmXeque(Cor cor)
+        {
+            Peca? R = Rei(cor);
+
+            if (R == null)
+            {
+                throw new TabuleiroException($"Não existe um rei da cor {cor}!");
+            }
+
+            foreach (Peca peca in PecasEmJogo(Adversario(cor)))
+            {
+                if (peca.MovimentosPossiveis()[R.Posicao.Linha, R.Posicao.Coluna])
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private Cor Adversario(Cor cor)
+        {
+            if (cor == Cor.Branca)
+            {
+                return Cor.Preta;
+            }
+            else
+            {
+                return Cor.Branca;
+            }
         }
     }
 }

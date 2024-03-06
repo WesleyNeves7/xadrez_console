@@ -20,6 +20,12 @@ namespace xadrex_console
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.Turno);
             Console.WriteLine("Jogador Atual: " + partida.JogadorAtual);
+
+            if (partida.Xeque)
+            {
+                Console.WriteLine();
+                Console.WriteLine("XEQUE!");
+            }
         }
 
         public static void ImprimirPartida(PartidaDeXadrez partida, bool[,] posicoesPossiveis)

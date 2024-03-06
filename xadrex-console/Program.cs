@@ -1,5 +1,4 @@
-﻿
-using xadrex_console;
+﻿using xadrex_console;
 using xadrex_console.TabuleiroXadrez;
 using xadrex_console.Xadrez;
 
@@ -33,10 +32,8 @@ namespace xadrez_console
 
                         Console.WriteLine();
 
-                        Console.WriteLine();
                         Console.Write("Destino: ");
                         Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
-
                         partida.RealizaJogada(origem, destino);
                     }
                     catch (TabuleiroException ex)

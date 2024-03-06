@@ -1,20 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Testes\\xadrez_console\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|c:\\testes\\xadrez_console\\xadrex-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|solutionrelative:xadrex-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|c:\\testes\\xadrez_console\\xadrex-console\\tabuleiroxadrez\\peca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|solutionrelative:xadrex-console\\tabuleiroxadrez\\peca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|c:\\testes\\xadrez_console\\xadrex-console\\xadrez\\posicaoxadrez.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|solutionrelative:xadrex-console\\xadrez\\posicaoxadrez.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,45 +26,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Peca.cs",
-              "DocumentMoniker": "C:\\Testes\\xadrez_console\\xadrex-console\\TabuleiroXadrez\\Peca.cs",
-              "RelativeDocumentMoniker": "xadrex-console\\TabuleiroXadrez\\Peca.cs",
-              "ToolTip": "C:\\Testes\\xadrez_console\\xadrex-console\\TabuleiroXadrez\\Peca.cs",
-              "RelativeToolTip": "xadrex-console\\TabuleiroXadrez\\Peca.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-06T11:39:57.595Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Testes\\xadrez_console\\xadrex-console\\Program.cs",
-              "RelativeDocumentMoniker": "xadrex-console\\Program.cs",
-              "ToolTip": "C:\\Testes\\xadrez_console\\xadrex-console\\Program.cs",
-              "RelativeToolTip": "xadrex-console\\Program.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAgwCcAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-06T11:20:03.763Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PosicaoXadrez.cs",
-              "DocumentMoniker": "C:\\Testes\\xadrez_console\\xadrex-console\\Xadrez\\PosicaoXadrez.cs",
-              "RelativeDocumentMoniker": "xadrex-console\\Xadrez\\PosicaoXadrez.cs",
-              "ToolTip": "C:\\Testes\\xadrez_console\\xadrex-console\\Xadrez\\PosicaoXadrez.cs",
-              "RelativeToolTip": "xadrex-console\\Xadrez\\PosicaoXadrez.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-06T10:48:17.183Z",
-              "EditorCaption": ""
             }
           ]
         }

@@ -43,6 +43,11 @@ namespace xadrex_console.TabuleiroXadrez
             QteMovimentos++;
         }
 
+        internal void DecrementarQtdMovimentos()
+        {
+            QteMovimentos--;
+        }
+
         internal bool PodeMover(Posicao pos)
         {
             if (!Tab.PosicaoValida(pos))
