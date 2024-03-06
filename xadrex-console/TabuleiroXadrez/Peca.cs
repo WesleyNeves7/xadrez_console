@@ -48,7 +48,7 @@ namespace xadrex_console.TabuleiroXadrez
             QteMovimentos--;
         }
 
-        internal bool PodeMover(Posicao pos)
+        internal virtual bool PodeMover(Posicao pos)
         {
             if (!Tab.PosicaoValida(pos))
             {
