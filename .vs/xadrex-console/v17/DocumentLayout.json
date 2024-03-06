@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Testes\\xadrez_console\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|c:\\testes\\xadrez_console\\xadrex-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|C:\\Testes\\xadrez_console\\xadrex-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|solutionrelative:xadrex-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|c:\\testes\\xadrez_console\\xadrex-console\\tela.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|solutionrelative:xadrex-console\\tela.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|c:\\testes\\xadrez_console\\xadrex-console\\xadrez\\partidadexadrez.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|solutionrelative:xadrex-console\\xadrez\\partidadexadrez.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,14 +39,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Tela.cs",
-              "DocumentMoniker": "C:\\Testes\\xadrez_console\\xadrex-console\\Tela.cs",
-              "RelativeDocumentMoniker": "xadrex-console\\Tela.cs",
-              "ToolTip": "C:\\Testes\\xadrez_console\\xadrex-console\\Tela.cs",
-              "RelativeToolTip": "xadrex-console\\Tela.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAEwDAAAAAkAAAA",
+              "Title": "PartidaDeXadrez.cs",
+              "DocumentMoniker": "C:\\Testes\\xadrez_console\\xadrex-console\\Xadrez\\PartidaDeXadrez.cs",
+              "RelativeDocumentMoniker": "xadrex-console\\Xadrez\\PartidaDeXadrez.cs",
+              "ToolTip": "C:\\Testes\\xadrez_console\\xadrex-console\\Xadrez\\PartidaDeXadrez.cs",
+              "RelativeToolTip": "xadrex-console\\Xadrez\\PartidaDeXadrez.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAgwCoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-05T16:13:46.387Z",
+              "WhenOpened": "2024-03-05T18:29:33.927Z",
               "EditorCaption": ""
             },
             {
@@ -57,7 +57,7 @@
               "RelativeDocumentMoniker": "xadrex-console\\Program.cs",
               "ToolTip": "C:\\Testes\\xadrez_console\\xadrex-console\\Program.cs",
               "RelativeToolTip": "xadrex-console\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAAAAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAQwCYAAABFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-05T14:37:20.663Z",
               "EditorCaption": ""

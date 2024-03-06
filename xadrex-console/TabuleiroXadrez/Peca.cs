@@ -16,7 +16,13 @@ namespace xadrex_console.TabuleiroXadrez
             Tab = tab;
         }
 
-        public void incrementarQtdMovimentos()
+        public bool PodeMoverPara(Posicao destino)
+        {
+            return MovimentosPossiveis()[destino.Linha, destino.Coluna];
+
+        }
+
+        internal void IncrementarQtdMovimentos()
         {
             QteMovimentos++;
         }
@@ -29,6 +35,19 @@ namespace xadrex_console.TabuleiroXadrez
             }
             Peca p = Tab.Peca(pos);
             return p == null || p.Cor != Cor;
+        }
+
+        public bool ExisteMovimentosPossiveis()
+        {
+            bool[,] mat = MovimentosPossiveis();
+            foreach(bool x in mat)
+            {
+                if (x)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public abstract bool[,] MovimentosPossiveis();

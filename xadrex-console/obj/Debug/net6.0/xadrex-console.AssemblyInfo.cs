@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("xadrex-console")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a1f498ba65462b59921230e52694f55771dd339")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d9db06bec8b33e12443c735f24d71fb80e86045")]
 [assembly: System.Reflection.AssemblyProductAttribute("xadrex-console")]
 [assembly: System.Reflection.AssemblyTitleAttribute("xadrex-console")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
