@@ -7,6 +7,7 @@ namespace xadrex_console.Xadrez
         public char Coluna { get; set; }
         public int Linha { get; set; }
 
+
         public PosicaoXadrez(char coluna, int linha)
         {
             Coluna = coluna;

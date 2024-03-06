@@ -5,6 +5,22 @@ namespace xadrex_console.TabuleiroXadrez
     {
         public Posicao Posicao { get; set; }
         public Cor Cor { get; set; }
+
+        public ConsoleColor CorImpressao
+        {
+            get
+            {
+                if (Cor == Cor.Branca)
+                {
+                    return ConsoleColor.White;
+                }
+                else
+                {
+                    return ConsoleColor.Magenta;
+                }
+            }
+        }
+
         public int QteMovimentos { get; set; }
         public Tabuleiro Tab { get; set; }
 
@@ -40,7 +56,7 @@ namespace xadrex_console.TabuleiroXadrez
         public bool ExisteMovimentosPossiveis()
         {
             bool[,] mat = MovimentosPossiveis();
-            foreach(bool x in mat)
+            foreach (bool x in mat)
             {
                 if (x)
                 {

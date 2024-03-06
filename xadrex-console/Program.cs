@@ -18,11 +18,7 @@ namespace xadrez_console
                     try
                     {
                         Console.Clear();
-                        Tela.ImprimirTabuleiro(partida.Tab);
-
-                        Console.WriteLine();
-                        Console.WriteLine("Turno: " + partida.Turno);
-                        Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
+                        Tela.ImprimirPartida(partida);
 
                         Console.WriteLine();
 
@@ -33,10 +29,9 @@ namespace xadrez_console
                         bool[,] posicoesPossiveis = partida.Tab.Peca(origem).MovimentosPossiveis();
 
                         Console.Clear();
-                        Tela.ImprimirTabuleiro(partida.Tab, posicoesPossiveis);
+                        Tela.ImprimirPartida(partida, posicoesPossiveis);
 
                         Console.WriteLine();
-                        Console.WriteLine("Turno: " + partida.Turno);
 
                         Console.WriteLine();
                         Console.Write("Destino: ");
@@ -50,8 +45,6 @@ namespace xadrez_console
                         Console.ReadLine();
                     }
                 }
-
-                Tela.ImprimirTabuleiro(partida.Tab);
             }
             catch (TabuleiroException e)
             {

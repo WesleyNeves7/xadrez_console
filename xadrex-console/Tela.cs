@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Intrinsics.X86;
 using xadrex_console.TabuleiroXadrez;
 using xadrex_console.Xadrez;
 
@@ -6,14 +7,67 @@ namespace xadrex_console
 {
     internal class Tela
     {
-        public static void ImprimirTabuleiro(Tabuleiro tab)
+        public static void ImprimirPartida(PartidaDeXadrez partida)
+        {
+            ImprimirPecasCapturadas(partida, Cor.Branca);
+            Console.WriteLine();
+
+            ImprimirTabuleiro(partida.Tab);
+
+            Console.WriteLine();
+            ImprimirPecasCapturadas(partida, Cor.Preta);
+
+            Console.WriteLine();
+            Console.WriteLine("Turno: " + partida.Turno);
+            Console.WriteLine("Jogador Atual: " + partida.JogadorAtual);
+        }
+
+        public static void ImprimirPartida(PartidaDeXadrez partida, bool[,] posicoesPossiveis)
+        {
+            ImprimirPecasCapturadas(partida, Cor.Branca);
+            Console.WriteLine();
+
+            ImprimirTabuleiro(partida.Tab, posicoesPossiveis);
+
+            Console.WriteLine();
+            ImprimirPecasCapturadas(partida, Cor.Preta);
+
+            Console.WriteLine();
+            Console.WriteLine("Turno: " + partida.Turno);
+            Console.WriteLine("Jogador Atual: " + partida.JogadorAtual);
+        }
+
+
+        private static void ImprimirPecasCapturadas(PartidaDeXadrez partida, Cor cor)
+        {
+            Console.Write($"Peças capturadas (Cor: {cor}): ");
+            ImprimirConjunto(partida.PecasCapturadas(cor));
+        }
+
+        private static void ImprimirConjunto(HashSet<Peca> conjunto)
+        {
+            Console.Write("[");
+            int x = 1;
+            foreach (Peca peca in conjunto)
+            {
+                if (x > 1)
+                {
+                    Console.Write(", ");
+                }
+                ImprimirPecaSemEspaco(peca);
+                x++;
+            }
+            Console.WriteLine("]");
+        }
+
+        private static void ImprimirTabuleiro(Tabuleiro tab)
         {
             for (int i = 0; i < tab.Linhas; i++)
             {
                 Console.Write(8 - i + "|  ");
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    ImprimirPeca(tab.Peca(i, j));
+                    ImprimirPecaComEspaco(tab.Peca(i, j));
                 }
                 Console.WriteLine();
             }
@@ -22,7 +76,7 @@ namespace xadrex_console
             Console.WriteLine("    A B C D E F G H");
         }
 
-        public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis)
+        private static void ImprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis)
         {
 
             ConsoleColor fundoOriginal = Console.BackgroundColor;
@@ -42,7 +96,7 @@ namespace xadrex_console
                     {
                         Console.BackgroundColor = fundoOriginal;
                     }
-                    ImprimirPeca(tab.Peca(i, j));
+                    ImprimirPecaComEspaco(tab.Peca(i, j));
 
                     Console.BackgroundColor = fundoOriginal;
                 }
@@ -55,27 +109,35 @@ namespace xadrex_console
             Console.BackgroundColor = fundoOriginal;
         }
 
-        public static void ImprimirPeca(Peca peca)
+        private static void ImprimirPecaComEspaco(Peca peca)
         {
             if (peca != null)
             {
-                if (peca.Cor == Cor.Branca)
-                {
-                    Console.Write(peca);
-                }
-                else
-                {
-                    ConsoleColor aux = Console.ForegroundColor;
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.Write(peca);
-                    Console.ForegroundColor = aux;
-                }
+                ConsoleColor aux = Console.ForegroundColor;
+                Console.ForegroundColor = peca.CorImpressao;
+                Console.Write(peca);
+                Console.ForegroundColor = aux;
             }
             else
             {
                 Console.Write("-");
             }
             Console.Write(" ");
+        }
+
+        private static void ImprimirPecaSemEspaco(Peca peca)
+        {
+            if (peca != null)
+            {
+                ConsoleColor aux = Console.ForegroundColor;
+                Console.ForegroundColor = peca.CorImpressao;
+                Console.Write(peca);
+                Console.ForegroundColor = aux;
+            }
+            else
+            {
+                Console.Write("-");
+            }
         }
 
         public static PosicaoXadrez LerPosicaoXadrez()
