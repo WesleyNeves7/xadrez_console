@@ -19,9 +19,19 @@ namespace xadrex_console
 
             Console.WriteLine();
             Console.WriteLine("Turno: " + partida.Turno);
-            Console.WriteLine("Jogador Atual: " + partida.JogadorAtual);
 
-            if (partida.Xeque)
+            if (!partida.Terminada)
+            {
+                Console.WriteLine("Jogador Atual: " + partida.JogadorAtual);
+            }
+
+            if (partida.Terminada)
+            {
+                Console.WriteLine();
+                Console.WriteLine("XEQUE MATE!");
+                Console.WriteLine("Vencedor: " + partida.Adversario(partida.JogadorAtual));
+            }
+            else if (partida.Xeque)
             {
                 Console.WriteLine();
                 Console.WriteLine("XEQUE!");
@@ -42,7 +52,6 @@ namespace xadrex_console
             Console.WriteLine("Turno: " + partida.Turno);
             Console.WriteLine("Jogador Atual: " + partida.JogadorAtual);
         }
-
 
         private static void ImprimirPecasCapturadas(PartidaDeXadrez partida, Cor cor)
         {

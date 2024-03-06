@@ -5,17 +5,17 @@ namespace xadrex_console.Xadrez
     internal class PartidaDeXadrez
     {
         public Tabuleiro Tab { get; private set; }
-        
+
         public int Turno { get; private set; }
-        
+
         public Cor JogadorAtual { get; private set; }
-        
+
         public bool Terminada { get; private set; }
 
         public bool Xeque { get; private set; }
-        
+
         private HashSet<Peca> Pecas;
-        
+
         private HashSet<Peca> Capturadas;
 
 
@@ -64,6 +64,7 @@ namespace xadrex_console.Xadrez
                 if (EstaEmXeque(Adversario(JogadorAtual)))
                 {
                     Xeque = true;
+                    TesteXequeMate(Adversario(JogadorAtual));
                 }
                 else
                 {
@@ -90,11 +91,17 @@ namespace xadrex_console.Xadrez
                 Capturadas.Add(pecaCapturada);
             }
 
-
             if (EstaEmXeque(peca.Cor))
             {
                 DesfazMovimento(origem, destino, pecaCapturada);
-                throw new TabuleiroException("Esta jogada não pode ser executada pois colocaria o seu rei em cheque!");
+                if (Xeque)
+                {
+                    throw new TabuleiroException("O seu rei em cheque!");
+                }
+                else
+                {
+                    throw new TabuleiroException("Esta jogada não pode ser executada pois colocaria o seu rei em cheque!");
+                }
             }
         }
 
@@ -185,7 +192,69 @@ namespace xadrex_console.Xadrez
             return false;
         }
 
-        private Cor Adversario(Cor cor)
+        private bool TesteXequeMate(Cor cor)
+        {
+            
+            if (!EstaEmXeque(cor))
+            {
+                return false;
+            }
+
+            foreach (Peca peca in PecasEmJogo(cor))
+            {
+                bool[,] mat = peca.MovimentosPossiveis();
+
+                for (int linha = 0; linha < Tab.Linhas; linha++)
+                {
+                    for (int coluna = 0; coluna < Tab.Colunas; coluna++)
+                    {
+                        if (mat[linha, coluna])
+                        {
+                            try
+                            {
+                                if (TestaMovimentoSaidaXeque(peca.Posicao, new Posicao(linha, coluna)))
+                                {
+                                    return false;
+                                }
+                            }
+                            catch
+                            {
+                            }
+                        }
+                    }
+                }
+            }
+
+            Terminada = true;
+            return true;
+
+        }
+
+        private bool TestaMovimentoSaidaXeque(Posicao origem, Posicao destino)
+        {
+            Peca peca = Tab.RetirarPeca(origem);
+            peca.IncrementarQtdMovimentos();
+            Peca pecaCapturada = Tab.RetirarPeca(destino);
+            Tab.ColocarPeca(peca, destino);
+
+            if (pecaCapturada != null)
+            {
+                Capturadas.Add(pecaCapturada);
+            }
+
+            bool x = false;
+
+            if (!EstaEmXeque(peca.Cor))
+            {
+                x = true;
+            }
+
+            DesfazMovimento(origem, destino, pecaCapturada);
+
+            return x;
+        }
+
+        public Cor Adversario(Cor cor)
         {
             if (cor == Cor.Branca)
             {
