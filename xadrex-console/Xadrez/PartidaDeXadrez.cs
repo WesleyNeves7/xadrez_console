@@ -51,13 +51,14 @@ namespace xadrex_console.Xadrez
 
         private void ValidarPosicaoDestino(Posicao origem, Posicao destino)
         {
+            Peca peca = Tab.Peca(origem);
             if (!Tab.Peca(origem).MovimentoPossivel(destino))
             {
                 throw new TabuleiroException("Posição de destino inválida!");
             }
         }
 
-        public void RealizaJogada(Posicao origem, Posicao destino)
+        public void RealizaJogada(Posicao origem, Posicao destino, Peca pecaPromocao = null)
         {
             try
             {
@@ -67,7 +68,40 @@ namespace xadrex_console.Xadrez
 
                 Peca pecaDestino = Tab.Peca(destino);
 
+                #region Jogada especial promoção pt1
+
+                if (pecaPromocao is Rei || pecaPromocao is Peao)
+                {
+                    throw new TabuleiroException("A peça a ser promovida não pode virar nem um Rei e nem continuar como Peão!");
+                }
+
+                if (peca is Peao)
+                {
+                    if ((peca.Cor == Cor.Branca && destino.Linha == 0) || (peca.Cor == Cor.Preta && destino.Linha == 7))
+                    {
+                        if (pecaPromocao == null)
+                        {
+                            throw new TabuleiroException("Escolha a peça que deseja para o Peão ser promovido!");
+                        }
+                    }
+                }
+
+                #endregion
+
                 ExecutaMovimento(origem, destino);
+
+                #region Jogada especial promoção pt2
+                if (peca is Peao)
+                {
+                    if ((peca.Cor == Cor.Branca && destino.Linha == 0) || (peca.Cor == Cor.Preta && destino.Linha == 7))
+                    {
+                        Tab.RetirarPeca(destino);
+                        _pecas.Remove(peca);
+                        pecaPromocao.Cor = peca.Cor;
+                        Tab.ColocarPeca(pecaPromocao, destino);
+                    }
+                }
+                #endregion
 
                 #region Jogada especial roque
 
@@ -102,14 +136,10 @@ namespace xadrex_console.Xadrez
                 }
 
                 // # jogada especial en passant (capturar peça vulneravel)
-
-
-                bool x = peca is Peao && pecaDestino == null;
-
                 if (peca is Peao
                     && pecaDestino == null
-                    && (origem.Coluna == destino.Coluna + 1)
-                    || (origem.Coluna == destino.Coluna - 1))
+                    && ((origem.Coluna == destino.Coluna + 1)
+                    || (origem.Coluna == destino.Coluna - 1)))
                 {
                     Peca pecaCapturada = Tab.RetirarPeca(new Posicao(origem.Linha, destino.Coluna));
                     _capturadas.Add(pecaCapturada);
@@ -133,6 +163,8 @@ namespace xadrex_console.Xadrez
             {
                 throw ex;
             }
+
+
         }
 
         private void ExecutaMovimento(Posicao origem, Posicao destino)

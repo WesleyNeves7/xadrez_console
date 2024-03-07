@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Testes\\xadrez_console\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|c:\\testes\\xadrez_console\\xadrex-console\\xadrez\\partidadexadrez.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|solutionrelative:xadrex-console\\xadrez\\partidadexadrez.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|c:\\testes\\xadrez_console\\xadrex-console\\xadrez\\rei.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98014FD4-247F-4C41-AEFC-A198B603D8E7}|xadrex-console\\xadrex-console.csproj|solutionrelative:xadrex-console\\xadrez\\rei.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,32 +26,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PartidaDeXadrez.cs",
-              "DocumentMoniker": "C:\\Testes\\xadrez_console\\xadrex-console\\Xadrez\\PartidaDeXadrez.cs",
-              "RelativeDocumentMoniker": "xadrex-console\\Xadrez\\PartidaDeXadrez.cs",
-              "ToolTip": "C:\\Testes\\xadrez_console\\xadrex-console\\Xadrez\\PartidaDeXadrez.cs",
-              "RelativeToolTip": "xadrex-console\\Xadrez\\PartidaDeXadrez.cs",
-              "ViewState": "AQIAAFsAAAAAAAAAAAAvwGgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-07T11:13:57.649Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Rei.cs",
-              "DocumentMoniker": "C:\\Testes\\xadrez_console\\xadrex-console\\Xadrez\\Rei.cs",
-              "RelativeDocumentMoniker": "xadrex-console\\Xadrez\\Rei.cs",
-              "ToolTip": "C:\\Testes\\xadrez_console\\xadrex-console\\Xadrez\\Rei.cs",
-              "RelativeToolTip": "xadrex-console\\Xadrez\\Rei.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-07T11:06:48.022Z",
-              "EditorCaption": ""
             }
           ]
         }
