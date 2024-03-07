@@ -7,6 +7,13 @@ namespace xadrex_console
 {
     internal class Tela
     {
+        private static ConsoleColor fundoTabuleiroCor1 { get => ConsoleColor.DarkGray; }
+        private static ConsoleColor fundoTabuleiroCor2 { get => ConsoleColor.Black; }
+
+        private static ConsoleColor fundoTabuleiro { get; set; }
+
+        private static ConsoleColor fundoSelecionado { get => ConsoleColor.Cyan; }
+
         public static void ImprimirPartida(PartidaDeXadrez partida)
         {
             ImprimirPecasCapturadas(partida, Cor.Branca);
@@ -77,13 +84,26 @@ namespace xadrex_console
 
         private static void ImprimirTabuleiro(Tabuleiro tab)
         {
+            ConsoleColor fundoOriginal = Console.BackgroundColor;
+
+            fundoTabuleiro = fundoTabuleiroCor1;
+
             for (int i = 0; i < tab.Linhas; i++)
             {
                 Console.Write(8 - i + "|  ");
                 for (int j = 0; j < tab.Colunas; j++)
                 {
+                    Console.BackgroundColor = fundoTabuleiro;
+
                     ImprimirPecaComEspaco(tab.Peca(i, j));
+
+                    AlteraCorTabuleiro();
+
+                    Console.BackgroundColor = fundoOriginal;
                 }
+
+                AlteraCorTabuleiro();
+
                 Console.WriteLine();
             }
             Console.WriteLine(" |__________________");
@@ -95,8 +115,6 @@ namespace xadrex_console
         {
 
             ConsoleColor fundoOriginal = Console.BackgroundColor;
-            ConsoleColor fundoAlterado = ConsoleColor.DarkGray;
-
 
             for (int i = 0; i < tab.Linhas; i++)
             {
@@ -105,16 +123,21 @@ namespace xadrex_console
                 {
                     if (posicoesPossiveis[i, j])
                     {
-                        Console.BackgroundColor = fundoAlterado;
+                        Console.BackgroundColor = fundoSelecionado;
                     }
                     else
                     {
-                        Console.BackgroundColor = fundoOriginal;
+                        Console.BackgroundColor = fundoTabuleiro;
                     }
                     ImprimirPecaComEspaco(tab.Peca(i, j));
 
+                    AlteraCorTabuleiro();
+
                     Console.BackgroundColor = fundoOriginal;
                 }
+
+                AlteraCorTabuleiro();
+
                 Console.WriteLine();
             }
             Console.WriteLine(" |__________________");
@@ -124,18 +147,31 @@ namespace xadrex_console
             Console.BackgroundColor = fundoOriginal;
         }
 
+        private static void AlteraCorTabuleiro()
+        {
+            if (fundoTabuleiro == fundoTabuleiroCor1)
+            {
+                fundoTabuleiro = fundoTabuleiroCor2;
+            }
+            else
+            {
+                fundoTabuleiro = fundoTabuleiroCor1;
+            }
+        }
+
         private static void ImprimirPecaComEspaco(Peca peca)
         {
             if (peca != null)
             {
                 ConsoleColor aux = Console.ForegroundColor;
                 Console.ForegroundColor = peca.CorImpressao;
+                
                 Console.Write(peca);
                 Console.ForegroundColor = aux;
             }
             else
             {
-                Console.Write("-");
+                Console.Write(" ");
             }
             Console.Write(" ");
         }
