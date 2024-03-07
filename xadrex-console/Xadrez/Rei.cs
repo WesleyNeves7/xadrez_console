@@ -5,11 +5,11 @@ namespace xadrex_console.Xadrez
 {
     internal class Rei : Peca
     {
-        private PartidaDeXadrez Partida { get; set; }
+        private PartidaDeXadrez _partida { get; set; }
 
         public Rei(Tabuleiro tab, Cor cor, PartidaDeXadrez partida) : base(cor, tab)
         {
-            Partida = partida;
+            _partida = partida;
         }
 
         public override bool[,] MovimentosPossiveis()
@@ -75,7 +75,7 @@ namespace xadrex_console.Xadrez
             }
 
             // # jogada especial roque
-            if (Partida.JogadorAtual == Cor)
+            if (_partida.JogadorAtual == Cor)
             {
                 if (PodeFazerRoquePequeno())
                 {
@@ -97,10 +97,10 @@ namespace xadrex_console.Xadrez
         {
             try
             {
-                if (!Partida.Xeque)
+                if (!_partida.Xeque)
                 {
-                    if (!Partida.CasaEstaEmXeque(Cor, new Posicao(Posicao.Linha, Posicao.Coluna + 1)) && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna + 1)) == null
-                        && !Partida.CasaEstaEmXeque(Cor, new Posicao(Posicao.Linha, Posicao.Coluna + 2)) && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna + 2)) == null)
+                    if (!_partida.CasaEstaEmXeque(Cor, new Posicao(Posicao.Linha, Posicao.Coluna + 1)) && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna + 1)) == null
+                        && !_partida.CasaEstaEmXeque(Cor, new Posicao(Posicao.Linha, Posicao.Coluna + 2)) && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna + 2)) == null)
                     {
                         Peca peca = Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna + 3));
 
@@ -122,10 +122,10 @@ namespace xadrex_console.Xadrez
         {
             try
             {
-                if (!Partida.Xeque)
+                if (!_partida.Xeque)
                 {
-                    if (!Partida.CasaEstaEmXeque(Cor, new Posicao(Posicao.Linha, Posicao.Coluna - 1)) && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna - 1)) == null
-                        && !Partida.CasaEstaEmXeque(Cor, new Posicao(Posicao.Linha, Posicao.Coluna - 2)) && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna - 2)) == null
+                    if (!_partida.CasaEstaEmXeque(Cor, new Posicao(Posicao.Linha, Posicao.Coluna - 1)) && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna - 1)) == null
+                        && !_partida.CasaEstaEmXeque(Cor, new Posicao(Posicao.Linha, Posicao.Coluna - 2)) && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna - 2)) == null
                         && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna - 3)) == null)
                     {
                         Peca peca = Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna - 4));

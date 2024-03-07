@@ -14,9 +14,11 @@ namespace xadrex_console.Xadrez
 
         public bool Xeque { get; private set; }
 
-        private HashSet<Peca> Pecas;
+        public Peca VulneravelEnPassant { get; private set; }
 
-        private HashSet<Peca> Capturadas;
+        private HashSet<Peca> _pecas;
+
+        private HashSet<Peca> _capturadas;
 
 
         public PartidaDeXadrez()
@@ -25,8 +27,9 @@ namespace xadrex_console.Xadrez
             Turno = 1;
             JogadorAtual = Cor.Branca;
             Xeque = false;
-            Pecas = new HashSet<Peca>();
-            Capturadas = new HashSet<Peca>();
+            _pecas = new HashSet<Peca>();
+            _capturadas = new HashSet<Peca>();
+            VulneravelEnPassant = null;
             ColocarPecas();
         }
 
@@ -62,9 +65,11 @@ namespace xadrex_console.Xadrez
 
                 Peca peca = Tab.Peca(origem);
 
+                Peca pecaDestino = Tab.Peca(destino);
+
                 ExecutaMovimento(origem, destino);
 
-                
+                #region Jogada especial roque
 
                 // # jogada especial roque pequeno
                 if (peca is Rei && destino.Coluna == origem.Coluna + 2)
@@ -82,6 +87,35 @@ namespace xadrex_console.Xadrez
                     ExecutaMovimento(origemT, destinoT);
                 }
 
+                #endregion
+
+                #region Jogada especial en passant
+
+                // # jogada especial en passant (tornar peça vulneravel)
+                if (peca is Peao && (origem.Linha + 2 == destino.Linha || origem.Linha - 2 == destino.Linha))
+                {
+                    VulneravelEnPassant = peca;
+                }
+                else
+                {
+                    VulneravelEnPassant = null;
+                }
+
+                // # jogada especial en passant (capturar peça vulneravel)
+
+
+                bool x = peca is Peao && pecaDestino == null;
+
+                if (peca is Peao
+                    && pecaDestino == null
+                    && (origem.Coluna == destino.Coluna + 1)
+                    || (origem.Coluna == destino.Coluna - 1))
+                {
+                    Peca pecaCapturada = Tab.RetirarPeca(new Posicao(origem.Linha, destino.Coluna));
+                    _capturadas.Add(pecaCapturada);
+                }
+
+                #endregion
 
                 if (EstaEmXeque(Adversario(JogadorAtual)))
                 {
@@ -110,7 +144,7 @@ namespace xadrex_console.Xadrez
 
             if (pecaCapturada != null)
             {
-                Capturadas.Add(pecaCapturada);
+                _capturadas.Add(pecaCapturada);
             }
 
             if (EstaEmXeque(peca.Cor))
@@ -136,7 +170,7 @@ namespace xadrex_console.Xadrez
             if (pecaCapturada != null)
             {
                 Tab.ColocarPeca(pecaCapturada, destino);
-                Capturadas.Remove(pecaCapturada);
+                _capturadas.Remove(pecaCapturada);
             }
         }
 
@@ -156,7 +190,7 @@ namespace xadrex_console.Xadrez
         private void ColocarNovaPeca(Peca peca, char coluna, int linha)
         {
             Tab.ColocarPeca(peca, new PosicaoXadrez(coluna, linha).ToPosicao());
-            Pecas.Add(peca);
+            _pecas.Add(peca);
         }
 
         private void ColocarPecas()
@@ -170,14 +204,14 @@ namespace xadrex_console.Xadrez
             ColocarNovaPeca(new Cavalo(Tab, Cor.Branca), 'G', 1);
             ColocarNovaPeca(new Torre(Tab, Cor.Branca), 'H', 1);
 
-            ColocarNovaPeca(new Peao(Tab, Cor.Branca), 'A', 2);
-            ColocarNovaPeca(new Peao(Tab, Cor.Branca), 'B', 2);
-            ColocarNovaPeca(new Peao(Tab, Cor.Branca), 'C', 2);
-            ColocarNovaPeca(new Peao(Tab, Cor.Branca), 'D', 2);
-            ColocarNovaPeca(new Peao(Tab, Cor.Branca), 'E', 2);
-            ColocarNovaPeca(new Peao(Tab, Cor.Branca), 'F', 2);
-            ColocarNovaPeca(new Peao(Tab, Cor.Branca), 'G', 2);
-            ColocarNovaPeca(new Peao(Tab, Cor.Branca), 'H', 2);
+            ColocarNovaPeca(new Peao(Tab, Cor.Branca, this), 'A', 2);
+            ColocarNovaPeca(new Peao(Tab, Cor.Branca, this), 'B', 2);
+            ColocarNovaPeca(new Peao(Tab, Cor.Branca, this), 'C', 2);
+            ColocarNovaPeca(new Peao(Tab, Cor.Branca, this), 'D', 2);
+            ColocarNovaPeca(new Peao(Tab, Cor.Branca, this), 'E', 2);
+            ColocarNovaPeca(new Peao(Tab, Cor.Branca, this), 'F', 2);
+            ColocarNovaPeca(new Peao(Tab, Cor.Branca, this), 'G', 2);
+            ColocarNovaPeca(new Peao(Tab, Cor.Branca, this), 'H', 2);
 
             ColocarNovaPeca(new Torre(Tab, Cor.Preta), 'A', 8);
             ColocarNovaPeca(new Cavalo(Tab, Cor.Preta), 'B', 8);
@@ -188,25 +222,24 @@ namespace xadrex_console.Xadrez
             ColocarNovaPeca(new Cavalo(Tab, Cor.Preta), 'G', 8);
             ColocarNovaPeca(new Torre(Tab, Cor.Preta), 'H', 8);
 
-            ColocarNovaPeca(new Peao(Tab, Cor.Preta), 'A', 7);
-            ColocarNovaPeca(new Peao(Tab, Cor.Preta), 'B', 7);
-            ColocarNovaPeca(new Peao(Tab, Cor.Preta), 'C', 7);
-            ColocarNovaPeca(new Peao(Tab, Cor.Preta), 'D', 7);
-            ColocarNovaPeca(new Peao(Tab, Cor.Preta), 'E', 7);
-            ColocarNovaPeca(new Peao(Tab, Cor.Preta), 'F', 7);
-            ColocarNovaPeca(new Peao(Tab, Cor.Preta), 'G', 7);
-            ColocarNovaPeca(new Peao(Tab, Cor.Preta), 'H', 7);
-
+            ColocarNovaPeca(new Peao(Tab, Cor.Preta, this), 'A', 7);
+            ColocarNovaPeca(new Peao(Tab, Cor.Preta, this), 'B', 7);
+            ColocarNovaPeca(new Peao(Tab, Cor.Preta, this), 'C', 7);
+            ColocarNovaPeca(new Peao(Tab, Cor.Preta, this), 'D', 7);
+            ColocarNovaPeca(new Peao(Tab, Cor.Preta, this), 'E', 7);
+            ColocarNovaPeca(new Peao(Tab, Cor.Preta, this), 'F', 7);
+            ColocarNovaPeca(new Peao(Tab, Cor.Preta, this), 'G', 7);
+            ColocarNovaPeca(new Peao(Tab, Cor.Preta, this), 'H', 7);
         }
 
         public HashSet<Peca> PecasCapturadas(Cor cor)
         {
-            return Capturadas.Where(i => i.Cor == cor).ToHashSet();
+            return _capturadas.Where(i => i.Cor == cor).ToHashSet();
         }
 
         public HashSet<Peca> PecasEmJogo(Cor cor)
         {
-            HashSet<Peca> aux = Pecas.Where(i => i.Cor == cor).ToHashSet();
+            HashSet<Peca> aux = _pecas.Where(i => i.Cor == cor).ToHashSet();
             aux.ExceptWith(PecasCapturadas(cor));
             return aux;
         }
@@ -296,7 +329,7 @@ namespace xadrex_console.Xadrez
 
             if (pecaCapturada != null)
             {
-                Capturadas.Add(pecaCapturada);
+                _capturadas.Add(pecaCapturada);
             }
 
             bool x = false;

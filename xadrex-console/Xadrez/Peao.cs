@@ -6,8 +6,12 @@ namespace xadrex_console.Xadrez
 {
     internal class Peao : Peca
     {
-        public Peao(Tabuleiro tab, Cor cor) : base(cor, tab)
+        private PartidaDeXadrez _partida { get; set; }
+
+
+        public Peao(Tabuleiro tab, Cor cor, PartidaDeXadrez partida) : base(cor, tab)
         {
+            _partida = partida;
         }
 
         public override bool[,] MovimentosPossiveis()
@@ -47,6 +51,22 @@ namespace xadrex_console.Xadrez
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
+
+                // # jogada especial en passant a direita
+                if (PodeFazerPassantDireita())
+                {
+                    pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna + 1);
+                    mat[pos.Linha, pos.Coluna] = true;
+                }
+
+                // # jogada especial en passant a esquerda
+                if (PodeFazerPassantEsquerda())
+                {
+                    pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna - 1);
+                    mat[pos.Linha, pos.Coluna] = true;
+                }
+
+
             }
             else
             {
@@ -79,9 +99,51 @@ namespace xadrex_console.Xadrez
                 {
                     mat[pos.Linha, pos.Coluna] = true;
                 }
+
+                // # jogada especial en passant a direita
+                if (PodeFazerPassantDireita())
+                {
+                    pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna + 1);
+                    mat[pos.Linha, pos.Coluna] = true;
+                }
+
+                // # jogada especial en passant a esquerda
+                if (PodeFazerPassantEsquerda())
+                {
+                    pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
+                    mat[pos.Linha, pos.Coluna] = true;
+                }
             }
 
             return mat;
+        }
+
+        private bool PodeFazerPassantEsquerda()
+        {
+            bool x = false;
+
+            try
+            {
+                x = (_partida.VulneravelEnPassant == Tab.Peca(Posicao.Linha, Posicao.Coluna - 1) && _partida.VulneravelEnPassant!=null);
+            }
+            catch
+            {
+            }
+            return x;
+        }
+
+        private bool PodeFazerPassantDireita()
+        {
+            bool x = false;
+
+            try
+            {
+                x = (_partida.VulneravelEnPassant == Tab.Peca(Posicao.Linha, Posicao.Coluna + 1) && _partida.VulneravelEnPassant != null);
+            }
+            catch
+            {
+            }
+            return x;
         }
 
         internal override bool PodeMover(Posicao pos)
