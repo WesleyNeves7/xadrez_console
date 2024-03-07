@@ -1,13 +1,15 @@
-﻿using System;
-using xadrex_console.TabuleiroXadrez;
+﻿using xadrex_console.TabuleiroXadrez;
 
 
 namespace xadrex_console.Xadrez
 {
     internal class Rei : Peca
     {
-        public Rei(Tabuleiro tab, Cor cor) : base(cor, tab)
+        private PartidaDeXadrez Partida { get; set; }
+
+        public Rei(Tabuleiro tab, Cor cor, PartidaDeXadrez partida) : base(cor, tab)
         {
+            Partida = partida;
         }
 
         public override bool[,] MovimentosPossiveis()
@@ -72,8 +74,75 @@ namespace xadrex_console.Xadrez
                 mat[pos.Linha, pos.Coluna] = true;
             }
 
+            // # jogada especial roque
+            if (Partida.JogadorAtual == Cor)
+            {
+                if (PodeFazerRoquePequeno())
+                {
+                    pos.DefinirValores(Posicao.Linha, Posicao.Coluna + 2);
+                    mat[pos.Linha, pos.Coluna] = true;
+                }
+                if (PodeFazerRoqueGrande())
+                {
+                    pos.DefinirValores(Posicao.Linha, Posicao.Coluna - 2);
+                    mat[pos.Linha, pos.Coluna] = true;
+                }
+            }
+
             return mat;
         }
+
+
+        private bool PodeFazerRoquePequeno()
+        {
+            try
+            {
+                if (!Partida.Xeque)
+                {
+                    if (!Partida.CasaEstaEmXeque(Cor, new Posicao(Posicao.Linha, Posicao.Coluna + 1)) && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna + 1)) == null
+                        && !Partida.CasaEstaEmXeque(Cor, new Posicao(Posicao.Linha, Posicao.Coluna + 2)) && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna + 2)) == null)
+                    {
+                        Peca peca = Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna + 3));
+
+                        if (QteMovimentos == 0 && peca?.QteMovimentos == 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+            }
+
+            return false;
+        }
+
+        private bool PodeFazerRoqueGrande()
+        {
+            try
+            {
+                if (!Partida.Xeque)
+                {
+                    if (!Partida.CasaEstaEmXeque(Cor, new Posicao(Posicao.Linha, Posicao.Coluna - 1)) && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna - 1)) == null
+                        && !Partida.CasaEstaEmXeque(Cor, new Posicao(Posicao.Linha, Posicao.Coluna - 2)) && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna - 2)) == null
+                        && Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna - 3)) == null)
+                    {
+                        Peca peca = Tab.Peca(new Posicao(Posicao.Linha, Posicao.Coluna - 4));
+
+                        if (QteMovimentos == 0 && peca?.QteMovimentos == 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+            }
+            return false;
+        }
+
 
         public override string ToString()
         {

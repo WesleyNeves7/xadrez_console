@@ -59,7 +59,29 @@ namespace xadrex_console.Xadrez
             try
             {
                 ValidarPosicaoDestino(origem, destino);
+
+                Peca peca = Tab.Peca(origem);
+
                 ExecutaMovimento(origem, destino);
+
+                
+
+                // # jogada especial roque pequeno
+                if (peca is Rei && destino.Coluna == origem.Coluna + 2)
+                {
+                    Posicao origemT = new Posicao(origem.Linha, origem.Coluna + 3);
+                    Posicao destinoT = new Posicao(origem.Linha, origem.Coluna + 1);
+                    ExecutaMovimento(origemT, destinoT);
+                }
+
+                // # jogada especial roque grande
+                if (peca is Rei && destino.Coluna == origem.Coluna - 2)
+                {
+                    Posicao origemT = new Posicao(origem.Linha, origem.Coluna - 4);
+                    Posicao destinoT = new Posicao(origem.Linha, origem.Coluna - 1);
+                    ExecutaMovimento(origemT, destinoT);
+                }
+
 
                 if (EstaEmXeque(Adversario(JogadorAtual)))
                 {
@@ -142,8 +164,8 @@ namespace xadrex_console.Xadrez
             ColocarNovaPeca(new Torre(Tab, Cor.Branca), 'A', 1);
             ColocarNovaPeca(new Cavalo(Tab, Cor.Branca), 'B', 1);
             ColocarNovaPeca(new Bispo(Tab, Cor.Branca), 'C', 1);
-            ColocarNovaPeca(new Rei(Tab, Cor.Branca), 'D', 1);
-            ColocarNovaPeca(new Dama(Tab, Cor.Branca), 'E', 1);
+            ColocarNovaPeca(new Dama(Tab, Cor.Branca), 'D', 1);
+            ColocarNovaPeca(new Rei(Tab, Cor.Branca, this), 'E', 1);
             ColocarNovaPeca(new Bispo(Tab, Cor.Branca), 'F', 1);
             ColocarNovaPeca(new Cavalo(Tab, Cor.Branca), 'G', 1);
             ColocarNovaPeca(new Torre(Tab, Cor.Branca), 'H', 1);
@@ -160,8 +182,8 @@ namespace xadrex_console.Xadrez
             ColocarNovaPeca(new Torre(Tab, Cor.Preta), 'A', 8);
             ColocarNovaPeca(new Cavalo(Tab, Cor.Preta), 'B', 8);
             ColocarNovaPeca(new Bispo(Tab, Cor.Preta), 'C', 8);
-            ColocarNovaPeca(new Rei(Tab, Cor.Preta), 'D', 8);
-            ColocarNovaPeca(new Dama(Tab, Cor.Preta), 'E', 8);
+            ColocarNovaPeca(new Dama(Tab, Cor.Preta), 'D', 8);
+            ColocarNovaPeca(new Rei(Tab, Cor.Preta, this), 'E', 8);
             ColocarNovaPeca(new Bispo(Tab, Cor.Preta), 'F', 8);
             ColocarNovaPeca(new Cavalo(Tab, Cor.Preta), 'G', 8);
             ColocarNovaPeca(new Torre(Tab, Cor.Preta), 'H', 8);
@@ -214,9 +236,22 @@ namespace xadrex_console.Xadrez
             return false;
         }
 
+        public bool CasaEstaEmXeque(Cor cor, Posicao casa)
+        {
+            foreach (Peca peca in PecasEmJogo(Adversario(cor)))
+            {
+                if (peca.MovimentosPossiveis()[casa.Linha, casa.Coluna])
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private bool TesteXequeMate(Cor cor)
         {
-            
+
             if (!EstaEmXeque(cor))
             {
                 return false;
